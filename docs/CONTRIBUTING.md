@@ -1,102 +1,102 @@
-为Lecithin贡献代码
-===============
+Contributing to Wind
+=======================
 
-[English](./CONTRIBUTING_EN.md) | **中文（简体）** | [中文（繁體）](./CONTRIBUTING_ZH_TW.md)
+We're glad that you want to contribute to our project!
+In general, our review of pull requests is very lenient.
+And if you can follow the rules below, we can complete the review faster.
 
-我们很开心您想为我们的项目做出贡献！一般来说，我们对PR的审核是十分宽松的；
-但是如果您可以遵守下列的规则，我们可以更快地完成审核。
+## Please fork using your personal account
 
-## 使用个人账户进行 Fork
+We regularly merge existing PRs.
+If there are some small problems, we'll help you solve them by editing your PR.
 
-我们会定期尝试合并已有的 PR，如果有一些小问题，会尝试帮您解决这些问题。
+But, if your PR is from an organization, we can NOT edit your PR, so we must merge your PR manually.
 
-但是如果您使用了组织账号进行 PR，我们就不能对您的 PR 进行修改了。因此我们只能关闭你的PR然后进行手动合并。
+So, don't use organization accounts for fork!
 
-所以，请不要使用组织账号进行 Fork！
+See also [This issue](https://github.com/isaacs/github/issues/1681), and then you'll know why we can't edit PRs from organizations.
 
-您可以看看 [这个 Issue](https://github.com/isaacs/github/issues/1681) 来了解一下我们为什么无法修改组织账号的 PR。
+## Development Environment
 
-## 开发环境
-
-在开始开发之前，您首先需要拥有以下软件作为开发环境：
+Before coding, you need these pieces of software / tools as Dev Environment.
 
 - `git`
-- `JDK 25 或更高版本`
+- `JDK 25 or higher`
 
-特别提醒：在操作前，您需要启用系统和Git的长路径支持，以下为部分平台的相关描述。
+PS: You need to enable long path support in your System and Git before start, some of the platform's resolution here.
 
 [`Windows`](https://learn.microsoft.com/windows/win32/fileio/maximum-file-path-limitation)
 [`Git for Windows`](https://gitforwindows.org/faq.html#i-get-errors-trying-to-check-out-files-with-long-path-names)
 
-## 了解补丁（Patches）
+## Understanding "Patches"
 
-Lecithin 使用和 Lophine 一样的补丁系统，并为了针对不同部分的修改分成了两个目录：
+Wind uses the same patching system as Lophine,
+and has been divided into two directories for the purpose of modifying different parts of it:
 
-- `lecithin-api` - 对 `Lophine-API` / `Folia-API` / `Paper-API` / `Spigot-API` / `Bukkit-API` 进行的修改。
-- `lecithin-server` - 对 Minecraft 标准服务器原有逻辑进行的修改。
+- `wind-api` - Modifications to `Lophine-API` / `Folia-API` / `Paper-API` / `Spigot-API` / `Bukkit-API`.
+- `wind-server` - Modifications to Minecraft Vanilla Server's source logic.
 
-补丁系统是基于 git 的，你可以在这里了解 git 的基本内容: <https://git-scm.com/docs/gittutorial>
+The patching system is based on git, and you can learn about it at here: <https://git-scm.com/docs/gittutorial>
 
-如果你已经 Fork 了主储存库，那么下面你应该这么做：
+If you have forked the main repository, then you should follow the steps below:
 
-1. 将你的仓库 clone 到本地；
-2. 在你的 IDE 或 终端 内执行 Gradle 的 `applyAllPatches` 任务，如果是在终端内，你可以执行 `./gradlew applyAllPatches`；
-3. 在执行操作后，仓库根目录下应该存在以下目录对： `lecithin-api` 和 `lecithin-server` , `folia-api` 和 `folia-server` ， 以及 `paper-api` 和 `paper-server`（下文称作 `*-api` 和 `*-server` ）；
-4. 进入 仓库根目录下的 `*-api` 和 `*-server` 文件夹进行修改。
+1. Clone your repository to local
+2. Run Gradle's `applyAllPatches` task in your IDE or terminal (You can run `./gradlew applyAllPatches` directly in terminal.)
+3. After performing the operation, the following directory pairs should exist in the root directory of the warehouse: `wind-api` and `wind-server` , `folia-api` and `folia-server` , `paper-api` and `paper-server` (Referred to `*-api` and `*-server` as below)
+4. Enter `*-api` and `*-server` directory to carry out modifications.
 
-以下为对上述各个文件夹的简单描述，详细描述可以参考[这里](https://github.com/Toffikk/paperweight-examples/blob/18241979c88068d5b061d95ad69c98ecb201c246/README.md)：
+The following is the simple description of the aforementioned folders, detailed description can be referred to [here](https://github.com/Toffikk/paperweight-examples/blob/18241979c88068d5b061d95ad69c98ecb201c246/README.md):
 
-1. API部分
+1. API part
 
-- `lecithin-api` ：对新增API的修改
-- `lophine-api` ：对lophine-API的修改应当在此文件夹下进行
-- `folia-api` ：对folia-API的修改应当在此文件夹下进行
-- `paper-api` ：对paper-API/spigot-API/bukkit-API的修改应该在此文件夹下进行
+- `wind-api` : Modifications to the new API
+- `lophine-api` : Modifications to Lophine API should be carried out in this folder
+- `folia-api` : Modifications to Folia API should be carried out in this folder
+- `paper-api` : Modifications to Paper API/Spigot API/Bukkit API should be carried out in this folder
 
-2. Server部分
+2. Server part
 
-- `lecithin-server` ：对Minecraft原版服务器的修改和新增文件应当在此文件夹下进行
-- `lophine-server` ：对lophine-Server的修改应当在此文件夹下进行
-- `folia-server` ：对folia-Server的修改应当在此文件夹下进行
-- `paper-server` ：对于paper对服务器逻辑的修改应当在此文件夹下进行
+- `wind-server` : Changes and new files to the Minecraft vanilla server should be made in this folder
+- `lophine-server` : Changes to Lophine server should be made in this folder
+- `folia-server` : Changes to Folia server should be made in this folder
+- `paper-server` : Modifications to the server logic for paper should be made in this folder
 
-顺便一提，仓库根目录下的 `*-api` 和 `*-server` 并不是正常的 git 仓库：
+BTW, `*-api` and `*-server` and are not normal git repositories.
 
-- 在应用补丁前，基点将会指向未被更改的源码
-- 在基点后的每一个提交都是一个补丁
-- 只有在 Folia 最后一个提交后的提交才会被视为 lecithin 补丁
+- Before applying patches, the base will point to unmodified source code.
+- Every commit after the base is a patch.
+- Only commits after the last commit of Folia will be considered as Wind patches.
 
-## 增加补丁
+## Adding new patches
 
-按照以下步骤增加一个补丁是非常简单的：
+It's very easy to add patches by following the steps below:
 
-1. 对 `*-api` 和 `*-server` 进行修改；
-2. 使用 git 添加你的修改，比如 `git add .`（不要提交新建的文件的修改）；
-3. 使用 `git commit -m <提交信息>` 进行提交；
-4. 运行 Gradle 任务 `fixupPaperApiFilePatches` 生成新建文件的补丁文件（注意不要提交）；
-5. 运行 Gradle 任务 `rebuildAllServerPatches` 将你的提交转化为一个补丁；
-6. 将你生成的补丁文件进行推送。
+1. Modify the code of `*-api` and `*-server`
+2. Add these changes to the local git repository (For example, `git add .`)
+3. Commit these changes using `git commit -m <Commit Message>` (PS: do not commit new-created files)
+4. Run Gradle's task `fixupPaperApiFilePatches` to generate newly created files to new patches (PS: do not commit again before you run this task)
+5. Run Gradle's task `rebuildAllServerPatches` to convert your commits to a new patch
+6. Push your patches to your repository
 
-这样做以后，你就可以将你的补丁文件进行 PR 提交。
+After pushing, you can open a PR to submit your patches.
 
-## 修改补丁
+## Modifying patches
 
-你可以使用以下方法来修改一个补丁的内容：
+You can modify an existing patch by following the steps below:
 
-1. 在 HEAD 上直接进行修改；
-2. 使用 `git commit -a --fixup <hash>` 来进行一个更正提交；（不要提交对在lecithin新建文件的修改）
-    - 如果你想要更改提交信息，你也可以用 `--squash` 来代替 `--fixup`。
-3. 使用 `git rebase -i --autosquash base` 来进行自动变基，你只需要输入 `:q` 来关闭确认页面即可；
-4. 运行 Gradle 任务 `fixupPaperApiFilePatches` 来修改已被修改的在lecithin新建文件的补丁（注意不要提交）；
-5. 运行 Gradle 任务 `rebuildAllServerPatches` 来修改已被修改的补丁；
-6. 将修改后的补丁 PR 发回储存库。
+1. Modify code at HEAD
+2. Run `git commit -a --fixup <hash>` in your terminal to make a fix-up commit (PS: do not commit changes of wind-created files)
+    - If you want to edit the commit message, replace `--fixup` with `--squash`
+3. Run `git rebase -i --autosquash base` to rebase automatically, then just type `:q` to close the confirm page
+4. Run Gradle's task `fixupPaperApiFilePatches` to regenerate wind-created files to patches (PS: do not commit again before you run this task)
+5. Run Gradle's task `rebuildAllServerPatches` to modify existing patches
+6. Push and PR again
 
-## 为配置项提供本地化的注释支持
+## Providing localized comment support for configuration entries
 
-1. 在 `lecithin-server/src/main/resources/assets/lecithin/lang` 目录下创建或修改相应的语言文件，添加本地化的注释；
-    - 文件的名字应当符合 `https://minecraft.wiki/w/Language` 页面下的格式，如 `en_us` `zh_cn` `zh_hk` `zh_tw`，文件以 `json` 为格式类型；
-2. 运行 Gradle 任务 `sortLangKeys` 来对你的语言文件内容进行重排序；
-3. 使用 `git commit -m <提交信息>` 进行提交；
-4. 将你修改的文件进行推送。
+1. Create or modify `wind-server/src/main/resources/assets/wind/lang/en_us.json`;
+2. Run the Gradle task `sortLangKeys` to re-sort the keys in your language file;
+3. Commit your changes using `git commit -m <Commit Message>`;
+4. Push your modified files to your repository.
 
-这样做以后，你就可以将你的修改进行 PR 提交。
+After pushing, you can open a PR to submit your changes.

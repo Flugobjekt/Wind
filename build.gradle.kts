@@ -17,43 +17,43 @@ paperweight {
 
         patchFile {
             path = "lophine-server/build.gradle.kts"
-            outputFile = file("lecithin-server/build.gradle.kts")
-            patchFile = file("lecithin-server/build.gradle.kts.patch")
+            outputFile = file("wind-server/build.gradle.kts")
+            patchFile = file("wind-server/build.gradle.kts.patch")
         }
         patchFile {
             path = "lophine-api/build.gradle.kts"
-            outputFile = file("lecithin-api/build.gradle.kts")
-            patchFile = file("lecithin-api/build.gradle.kts.patch")
+            outputFile = file("wind-api/build.gradle.kts")
+            patchFile = file("wind-api/build.gradle.kts.patch")
         }
         patchFile {
             path = "lophine-checkstyle/build.gradle.kts"
-            outputFile = file("lecithin-checkstyle/build.gradle.kts")
-            patchFile = file("lecithin-checkstyle/build.gradle.kts.patch")
+            outputFile = file("wind-checkstyle/build.gradle.kts")
+            patchFile = file("wind-checkstyle/build.gradle.kts.patch")
         }
         patchRepo("paperApi") {
             upstreamPath = "paper-api"
-            patchesDir = file("lecithin-api/paper-patches")
+            patchesDir = file("wind-api/paper-patches")
             outputDir = file("paper-api")
         }
         patchRepo("foliaApi") {
             upstreamPath = "folia-api"
-            patchesDir = file("lecithin-api/folia-patches")
+            patchesDir = file("wind-api/folia-patches")
             outputDir = file("folia-api")
         }
         patchDir("lophineApi") {
             upstreamPath = "lophine-api"
             excludes = listOf("build.gradle.kts", "build.gradle.kts.patch", "paper-patches")
-            patchesDir = file("lecithin-api/lophine-patches")
+            patchesDir = file("wind-api/lophine-patches")
             outputDir = file("lophine-api")
         }
         patchRepo("paperCheckstyle") {
             upstreamPath = "paper-checkstyle"
-            patchesDir = file("lecithin-checkstyle/paper-patches")
+            patchesDir = file("wind-checkstyle/paper-patches")
             outputDir = file("paper-checkstyle")
         }
         patchRepo("paperCheckstyleConfig") {
             upstreamPath = ".checkstyle"
-            patchesDir = file("lecithin-checkstyle/config-patches")
+            patchesDir = file("wind-checkstyle/config-patches")
             outputDir = file(".checkstyle")
         }
     }
@@ -128,9 +128,9 @@ subprojects {
 }
 
 // Sort all JSON language files under the lang directory by key in ASCII order
-val langDir = layout.projectDirectory.dir("lecithin-server/src/main/resources/assets/lecithin/lang")
+val langDir = layout.projectDirectory.dir("wind-server/src/main/resources/assets/wind/lang")
 tasks.register("sortLangKeys") {
-    group = "lecithin"
+    group = "wind"
     description = "Sort all JSON language files by key in ASCII (ordinal) order"
     notCompatibleWithConfigurationCache("Inline task action references build script class")
     inputs.dir(langDir).optional()

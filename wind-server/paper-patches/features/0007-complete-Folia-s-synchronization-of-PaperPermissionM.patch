@@ -1,0 +1,69 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: TinyYana <yanasakuranight@gmail.com>
+Date: Fri, 31 Jul 2026 15:12:06 +0800
+Subject: [PATCH] complete Folia's synchronization of PaperPermissionManager
+
+Folia wrapped every method of that class in synchronized (this) except two:
+getDefaultPermissions(boolean), which copies defaultPerms().get(op), and
+removePermission(String), which mutates permissions().
+
+The reader is the one that bites. ImmutableSet.copyOf sizes an array from the
+set and then fills it, so a concurrent add from another thread's addPermission
+aborts the copy with ArrayIndexOutOfBoundsException out of
+LinkedHashMap.keysToArray. Two threads really do register permissions during
+boot: Luminol loads its config on a ForkJoinPool thread and registers Leaves
+command permissions from there while the main thread does the same. Measured on
+the 38-jar mirror: 3 aborted starts in about 12.
+
+Only a set copy runs under the monitor - no plugin code, no callback, no second
+lock - so no lock-ordering edge is added, and the writers keep calling
+dirtyPermissibles outside their own block exactly as before.
+
+removePermission is fixed alongside it with no crash of its own on record: a
+class synchronized everywhere except one writer is not synchronized.
+
+diff --git a/src/main/java/io/papermc/paper/plugin/manager/PaperPermissionManager.java b/src/main/java/io/papermc/paper/plugin/manager/PaperPermissionManager.java
+index 9ddbb2d72e11c6abbbdb866f3010f276efceda41..4ebf520126ad9a9e96ce394e91660751c2fbc8d3 100644
+--- a/src/main/java/io/papermc/paper/plugin/manager/PaperPermissionManager.java
++++ b/src/main/java/io/papermc/paper/plugin/manager/PaperPermissionManager.java
+@@ -77,7 +77,21 @@ abstract class PaperPermissionManager implements PermissionManager {
+     @Override
+     @NotNull
+     public Set<Permission> getDefaultPermissions(boolean op) {
++        // Wind start - Folia synchronized the writers of defaultPerms() but not this reader.
++        // ImmutableSet.copyOf sizes the array first and then fills it, so a concurrent add from
++        // another thread's addPermission/recalculatePermissionDefaults aborts the copy with
++        // ArrayIndexOutOfBoundsException. That is not hypothetical: Luminol loads its config on a
++        // ForkJoin thread and registers Leaves command permissions from there while the main thread
++        // is still registering its own, and the server dies during boot roughly one start in four.
++        // Nothing but a set copy runs under the monitor, so this adds no lock-ordering edge - which
++        // is why the writers deliberately call dirtyPermissibles outside their own block.
++        if (!fun.bm.wind.config.modules.CompatConfig.permissionLocking) {
++            return ImmutableSet.copyOf(this.defaultPerms().get(op)); // stock body, kill switch
++        }
++        synchronized (this) {
+         return ImmutableSet.copyOf(this.defaultPerms().get(op));
++        }
++        // Wind end
+     }
+ 
+ 
+@@ -89,7 +103,18 @@ abstract class PaperPermissionManager implements PermissionManager {
+ 
+     @Override
+     public void removePermission(@NotNull String name) {
++        // Wind start - the second method Folia's synchronization sweep missed. Every other
++        // mutation of permissions() holds the monitor; this one races getPermissions()'s copy the
++        // same way getDefaultPermissions raced above. No crash observed from it yet - it is fixed
++        // because a class that is synchronized everywhere except one writer is not synchronized.
++        if (!fun.bm.wind.config.modules.CompatConfig.permissionLocking) {
++            this.permissions().remove(name.toLowerCase(java.util.Locale.ENGLISH)); // stock body, kill switch
++            return;
++        }
++        synchronized (this) {
+         this.permissions().remove(name.toLowerCase(java.util.Locale.ENGLISH));
++        }
++        // Wind end
+     }
+ 
+     @Override

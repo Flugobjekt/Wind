@@ -1,19 +1,26 @@
 # Ignore Gradle project-specific cache directory
 .gradle
+.jdk/
 
 # Ignore Gradle build output directory
 build
 
 /run
 
-/lecithin-server/build.gradle.kts
-/lecithin-api/build.gradle.kts
-/lecithin-checkstyle/build.gradle.kts
-/luminol-server/src/minecraft
+/wind-server/build.gradle.kts
+/wind-api/build.gradle.kts
+/wind-checkstyle/build.gradle.kts
+/wind-server/src/minecraft
 /paper-server
 /paper-api
 /paper-api-generator
 /paper-checkstyle
 /.checkstyle
+/folia-api
+/folia-server
+/lophine-api
+/lophine-server
+/test-plugin.settings.gradle.kts
+/wind-generator.settings.gradle.kts
 
 .idea/

@@ -1,0 +1,41 @@
+package fun.bm.wind.command.sub;
+
+import fun.bm.wind.command.WindCommand;
+import fun.bm.wind.command.WindContextReport;
+import io.papermc.paper.command.brigadier.CommandSourceStack;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
+import org.jetbrains.annotations.NotNull;
+import org.leavesmc.leaves.command.CommandContext;
+import org.leavesmc.leaves.command.LiteralNode;
+
+/**
+ * Wind: {@code /wind context} - report the execution context of this very command.
+ *
+ * <p>Read-only. It answers, for the source that ran it: which thread, which tick region, which
+ * regioniser and which world that region belongs to, which {@code ServerLevel} and position the
+ * command source carries, and which player a vanilla selector picks from there. Running it as a
+ * player, from a command block and from the console gives the three answers that together explain
+ * every "the selector used the wrong world" report.
+ */
+public class ContextCommand extends LiteralNode {
+
+    public ContextCommand() {
+        super("context");
+    }
+
+    @Override
+    public boolean requires(@NotNull CommandSourceStack source) {
+        return WindCommand.hasPermission(source.getSender(), this.name);
+    }
+
+    @Override
+    protected boolean execute(@NotNull CommandContext context) {
+        final net.minecraft.commands.CommandSourceStack nms =
+                ((io.papermc.paper.command.brigadier.PaperCommandSourceStack) context.getSource()).getHandle();
+        for (final Component line : WindContextReport.context(nms)) {
+            context.getSender().sendMessage(line);
+        }
+        return true;
+    }
+}

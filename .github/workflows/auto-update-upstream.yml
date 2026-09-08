@@ -170,12 +170,12 @@ jobs:
             git checkout -b "$BRANCH"
           fi
 
-          # 恢复修改
+          # Restore local changes
           git stash pop
-          # 清理 Gradle apply 任务产生的嵌套 .git 目录，避免被当作 gitlink 提交
+          # Remove nested .git directories created by Gradle apply tasks to avoid gitlinks
           find . -mindepth 2 -name .git -type d -exec rm -rf {} + 2>/dev/null || true
 
-          # 如果要推送的分支已存在且内容一致，跳过推送
+          # Skip the push when the remote branch already contains identical content
           if git rev-parse "origin/$BRANCH" >/dev/null 2>&1; then
             if git diff --quiet "origin/$BRANCH" --; then
               echo "Remote branch $BRANCH is up to date, skipping push"
@@ -188,7 +188,7 @@ jobs:
           git commit -F /tmp/commit-msg.txt
           git push origin "$BRANCH" --force
 
-          # 查找已有的上游更新 PR
+          # Find an existing upstream update PR
           EXISTING=$(gh pr list --head "$BRANCH" --state open --json number --jq '.[0].number // empty')
           if [ -n "$EXISTING" ]; then
             gh pr edit "$EXISTING" --title "$TITLE" --body-file /tmp/commit-msg.txt

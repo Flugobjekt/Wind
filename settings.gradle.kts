@@ -18,15 +18,15 @@ plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
 }
 
-rootProject.name = "lecithin"
+rootProject.name = "wind"
 
-for (name in listOf("lecithin-api", "lecithin-server", "lecithin-checkstyle")) {
+for (name in listOf("wind-api", "wind-server", "wind-checkstyle")) {
     include(name)
     file(name).mkdirs()
 }
 
 optionalInclude("test-plugin")
-optionalInclude("lecithin-generator")
+optionalInclude("wind-generator")
 
 fun optionalInclude(name: String, op: (ProjectDescriptor.() -> Unit)? = null) {
     val settingsFile = file("$name.settings.gradle.kts")
@@ -46,12 +46,12 @@ fun optionalInclude(name: String, op: (ProjectDescriptor.() -> Unit)? = null) {
 
 gradle.lifecycle.beforeProject {
     val mcVersion = providers.gradleProperty("mcVersion").get().trim()
-    val lecithinVersionChannel = providers.gradleProperty("channel").get().trim()
-    val lecithinBuildNumber = providers.environmentVariable("BUILD_NUMBER").orNull?.trim()?.toInt()
-    val versionString = if (lecithinBuildNumber == null) {
+    val windVersionChannel = providers.gradleProperty("channel").get().trim()
+    val windBuildNumber = providers.environmentVariable("BUILD_NUMBER").orNull?.trim()?.toInt()
+    val versionString = if (windBuildNumber == null) {
         "$mcVersion.local-SNAPSHOT"
     } else {
-        "$mcVersion.build.$lecithinBuildNumber-${lecithinVersionChannel.lowercase()}"
+        "$mcVersion.build.$windBuildNumber-${windVersionChannel.lowercase()}"
     }
     version = versionString
 }

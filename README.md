@@ -1,68 +1,66 @@
 <div align="center">
 
-[//]: # (  <img src="./public/image/lecithin/lecithin3.png" alt="Lecithin Logo" width="300">)
-  
-  # Lecithin
-  
-  *Lecithin 是一个基于Lophine的分支，具有许多有用的优化和可配置的原版特性，目标是在Lophine上修复原有的 paper/spigot/bukkit API*
-  
-  ![Created At](https://img.shields.io/github/created-at/LophineLabs/Lecithin?style=for-the-badge&color=blue)
-  [![License](https://img.shields.io/github/license/LophineLabs/Lecithin?style=for-the-badge&color=green)](LICENSE.md)
-  [![Issues](https://img.shields.io/github/issues/LophineLabs/Lecithin?style=for-the-badge&color=orange)](https://github.com/LophineLabs/Lecithin/issues)
-  
-  ![Commit Activity](https://img.shields.io/github/commit-activity/w/LophineLabs/Lecithin?style=for-the-badge&color=purple)
-  ![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/LophineLabs/Lecithin?style=for-the-badge&color=yellow)
-  ![GitHub all releases](https://img.shields.io/github/downloads/LophineLabs/Lecithin/total?style=for-the-badge&color=red)
-  
-  ![Repo contributors](https://img.shields.io/github/contributors/LophineLabs/Lecithin?style=for-the-badge&color=brightgreen)
-  
-  [English](./README_EN.md) | **中文（简体）** | [中文（繁體）](./README_ZH_TW.md)
+# Wind
+
+*Wind is a Lophine fork focused on plugin compatibility, performance, and configurable vanilla features.*
+
+![Created At](https://img.shields.io/github/created-at/Flugobjekt/Wind?style=for-the-badge&color=blue)
+[![License](https://img.shields.io/github/license/Flugobjekt/Wind?style=for-the-badge&color=green)](LICENSE.md)
+[![Issues](https://img.shields.io/github/issues/Flugobjekt/Wind?style=for-the-badge&color=orange)](https://github.com/Flugobjekt/Wind/issues)
+
+![Commit Activity](https://img.shields.io/github/commit-activity/w/Flugobjekt/Wind?style=for-the-badge&color=purple)
+![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/Flugobjekt/Wind?style=for-the-badge&color=yellow)
+![GitHub all releases](https://img.shields.io/github/downloads/Flugobjekt/Wind/total?style=for-the-badge&color=red)
+
+![Repo contributors](https://img.shields.io/github/contributors/Flugobjekt/Wind?style=for-the-badge&color=brightgreen)
+
 </div>
 
 ---
 
-## ✨ 核心特性
+## ✨ Core Features
 
-- 🔧 **可配置的原版特性** - 灵活调整游戏机制以适应不同服务器需求
-- 📊 **Tpsbar 支持** - 实时显示服务器 TPS 状态
-- 🐛 **Folia Bug 修复** - 针对 Folia 已知问题的专项修复
-- 💾 **多存档格式支持** - 支持 linear 和 b_linear（linear 重新实现）存档格式
-- 🔬 **生电功能增强** - 在 Folia 上实现更多生电内容（完整生电请使用 Fabric）
-- 🛠️ **更多实用功能** - 持续添加有用的服务器功能
+- 🔧 **Configurable Vanilla Features** - Flexibly adjust game mechanics to suit different server needs
+- 📊 **Tpsbar Support** - Real-time TPS status display
+- 🐛 **Folia Bug Fixes** - Targeted fixes for known Folia issues
+- 💾 **Multiple World Format Support** - Support for linear and b_linear (linear reimplementation) world formats
+- 🔬 **Redstone Enhancement** - More redstone functionality on Folia (use Fabric for complete redstone features)
+- 🛠️ **More Useful Functions** - Continuously adding useful server features
 
-### 额外启动参数
+### Additional Launch Parameters
 
- - morninggloryclip.useMojangSource 强制服务端使用mojang源下载文件
- - morninggloryclip.enable.mixin 启用服务器插件的mixin支持
+ - morninggloryclip.useMojangSource - Use Mojang's source for Minecraft Server
+ - morninggloryclip.enable.mixin - Enable mixin support for Leaves Plugin
 
-## 📥 下载
+## 📥 Download
 
-### 稳定版本
-所有发布版本都可以在 [Releases](https://github.com/LophineLabs/Lecithin/releases) 页面找到。
+### Stable Releases
+All release versions can be found on the [Releases](https://github.com/Flugobjekt/Wind/releases) page.
 
-### 开发版本
-如果您想体验最新功能，可以通过以下步骤自行构建。
+### Development Builds
+If you want to experience the latest features, you can build it yourself following the steps below.
 
-### 构建步骤
+### Build Steps
 
 ```bash
-# 克隆项目
-git clone https://github.com/LophineLabs/Lecithin.git
-cd Lecithin
+# Clone the project
+git clone https://github.com/Flugobjekt/Wind.git
+cd Wind
 
-# 应用补丁并构建 Paperclip JAR
+# Apply patches and build Paperclip JAR
 ./gradlew applyAllPatches && ./gradlew createPaperclipJar
 ```
 
-构建完成后，您可以在 `lecithin-server/build/libs` 目录中找到生成的 JAR 文件。
+After building, you can find the generated JAR file in the `wind-server/build/libs` directory.
 
-## 🔌 API 使用
+## 🔌 API Usage
 
-### Gradle 配置
+### Gradle Configuration
 
-在这个项目中，我们并不打算添加额外的API，仅用于修复原有的 paper/spigot/bukkit API，你可以使用我们上游的 API
+In this project, we don't plan to add extra APIs, it's just to fix the existing paper/spigot/bukkit API, you can use our upstream API
 
 ```kotlin
+
 repositories {
     maven {
         url = "https://repo.bacteriawa.com/repository/maven-public/"
@@ -78,7 +76,7 @@ java {
 }
 ```
 
-### Maven 配置
+### Maven Configuration
 
 ```xml
 <repositories>
@@ -93,48 +91,47 @@ java {
         <groupId>fun.bm.lophine</groupId>
         <artifactId>lophine-api</artifactId>
         <version>[26.2.build,)</version>
+        <scope>provided</scope>
     </dependency>
 </dependencies>
 ```
 
-## 💬 社区与支持
+## 💬 Community & Support
 
-> 如果您对这个项目感兴趣或有任何问题，请随时向我们提问。
+> If you're interested in this project or have any questions, feel free to ask us.
 
-### 加入我们的社区
+### Join Our Community
 
-- **QQ群**: [1020403749](https://qm.qq.com/cgi-bin/qm/qr?k=y_MA9UaN7PM9e9J1LIs9Eea3LK8C0h6J&jump_from=webapi&authKey=ap5f8MlbeezXYtnmpnT5ZOFljDuOyV6OAb2PIcViQ+Ilr60Ycq63FDDTsJOZDYtj)
-- **Discord**: [点击加入](https://discord.gg/UXSgPZczcy)
+- **QQ Group**: [1020403749](https://qm.qq.com/cgi-bin/qm/qr?k=y_MA9UaN7PM9e9J1LIs9Eea3LK8C0h6J&jump_from=webapi&authKey=ap5f8MlbeezXYtnmpnT5ZOFljDuOyV6OAb2PIcViQ+Ilr60Ycq63FDDTsJOZDYtj)
+- **Discord**: [Join Here](https://discord.gg/UXSgPZczcy)
 
-### 获取帮助
+### Get Help
 
-- 📋 [提交 Issue](https://github.com/LophineLabs/Lecithin/issues)
-- 💬 [GitHub Discussions](https://github.com/LophineLabs/Lecithin/discussions)
-- 📖 [项目文档](./docs/)
+- 📋 [Submit Issues](https://github.com/Flugobjekt/Wind/issues)
+- 💬 [GitHub Discussions](https://github.com/Flugobjekt/Wind/discussions)
+- 📖 [Project Documentation](./docs/)
 
-## 🐛 问题反馈
+## 🐛 Bug Reports
 
-当您遇到任何问题时，请向我们提问，我们将尽力解决。请记得：
+When you encounter any issues, please ask us and we'll do our best to resolve them. Please remember to:
 
-- 📝 **清楚描述问题** - 详细说明问题的具体表现
-- 📋 **提供完整日志** - 包含错误日志和相关配置信息
-- 🔍 **环境信息** - 说明服务器版本、插件列表等环境详情
-- 🔄 **复现步骤** - 如果可能，请提供问题复现的具体步骤
+- 📝 **Describe the problem clearly** - Provide detailed information about the specific issue
+- 📋 **Provide complete logs** - Include error logs and relevant configuration information
+- 🔍 **Environment details** - Specify server version, plugin list, and other environment details
+- 🔄 **Reproduction steps** - If possible, provide specific steps to reproduce the issue
 
-## 🤝 贡献代码
+## 🤝 Contributing
 
-我们欢迎社区贡献！详细的贡献指南请查看：
+We welcome community contributions! For detailed contribution guidelines, please see:
 
-- 📖 [贡献指南 - 中文（简体）](./docs/CONTRIBUTING.md)
-- 📖 [貢獻指南 - 中文（繁體）](./docs/CONTRIBUTING_ZH_TW.md)
-- 📖 [Contributing Guide - English](./docs/CONTRIBUTING_EN.md)
+- 📖 [Contributing Guide](./docs/CONTRIBUTING.md)
 
-## 📊 项目统计
+## 📊 Project Statistics
 
-### BStats 数据
+### BStats Data
 
-![bStats](https://bstats.org/signatures/server-implementation/Lecithin.svg "bStats")
+![bStats](https://bstats.org/signatures/server-implementation/Wind.svg "bStats")
 
-## ⭐ 请给我们一个 Star！
+## ⭐ Give Us a Star!
 
-> 你的每一个免费的 ⭐Star 就是我们每一个前进的动力。
+> Every free ⭐Star you give is the motivation for our every step forward.
