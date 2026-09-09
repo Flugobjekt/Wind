@@ -1,0 +1,75 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Wind <wind@localhost>
+Subject: [PATCH] Store Kaiiju entity limits in the Luminol namespace
+
+diff --git a/src/main/java/dev/kaiijumc/kaiiju/KaiijuEntityLimits.java b/src/main/java/dev/kaiijumc/kaiiju/KaiijuEntityLimits.java
+--- a/src/main/java/dev/kaiijumc/kaiiju/KaiijuEntityLimits.java
++++ b/src/main/java/dev/kaiijumc/kaiiju/KaiijuEntityLimits.java
+@@ -37,14 +37,12 @@
+ @SuppressWarnings("unused")
+ public class KaiijuEntityLimits {
+     private static final Logger LOGGER = LogUtils.getLogger();
+-    private static final File CONFIG_FOLDER = new File("luminol_config");
+ 
+     protected static final String HEADER =
+             "Per region entity limits for Kaiiju.\n"
+                     + "If there are more of particular entity type in a region than limit, entity ticking will be throttled.\n"
+                     + "Example: for Wither limit 100 & 300 Withers in a region -> 100 Withers tick every tick & every Wither ticks every 3 ticks.\n"
+                     + "Entity names are named under the registry of minecraft's entity type";
+-    protected static final File ENTITY_LIMITS_FILE = new File(CONFIG_FOLDER, "kaiiju_entity_limits.yml");
+     public static YamlConfiguration entityLimitsConfig;
+     public static boolean enabled = false;
+ 
+@@ -53,31 +51,8 @@
+     }
+ 
+     private static void init(boolean setup) {
+-        entityLimitsConfig = new YamlConfiguration();
+-
+-        if (ENTITY_LIMITS_FILE.exists()) {
+-            try {
+-                entityLimitsConfig.load(ENTITY_LIMITS_FILE);
+-            } catch (InvalidConfigurationException ex) {
+-                Bukkit.getLogger().log(Level.SEVERE, "Could not load kaiiju_entity_limits.yml, please correct your syntax errors", ex);
+-                throw Throwables.propagate(ex);
+-            } catch (IOException ignore) {
+-            }
+-        } else {
+-            if (setup) {
+-                entityLimitsConfig.options().header(HEADER);
+-                entityLimitsConfig.options().copyDefaults(true);
+-                entityLimitsConfig.set("enabled", enabled);
+-                entityLimitsConfig.set("axolotl.limit", 1000);
+-                entityLimitsConfig.set("axolotl.removal", 2000);
+-
+-                try {
+-                    entityLimitsConfig.save(ENTITY_LIMITS_FILE);
+-                } catch (IOException ex) {
+-                    Bukkit.getLogger().log(Level.SEVERE, "Could not save " + ENTITY_LIMITS_FILE, ex);
+-                }
+-            }
+-        }
++        entityLimitsConfig = fun.bm.wind.config.WindEntityLimitsConfig.load(
++                me.earthme.luminol.config.ConfigManager.getConfigs("luminol").getFileInstance());
+ 
+         enabled = entityLimitsConfig.getBoolean("enabled");
+ 
+
+diff --git a/src/main/java/me/earthme/luminol/config/ConfigsInstance.java b/src/main/java/me/earthme/luminol/config/ConfigsInstance.java
+--- a/src/main/java/me/earthme/luminol/config/ConfigsInstance.java
++++ b/src/main/java/me/earthme/luminol/config/ConfigsInstance.java
+@@ -967,6 +967,14 @@
+             validValues.put(key, configFileInstance.get(key));
+             validComments.put(key, configFileInstance.getComment(key));
+         }
++        if (name.equals("luminol")) {
++            for (String key : java.util.List.of("optimizations.kaiiju_entity_limiter", "wind-entity-limits-migrated")) {
++                if (configFileInstance.contains(key)) {
++                    validValues.put(key, configFileInstance.get(key));
++                    validComments.put(key, configFileInstance.getComment(key));
++                }
++            }
++        }
+         configFileInstance.clear();
+         validValues.forEach(configFileInstance::set);
+         validComments.forEach(configFileInstance::setComment);

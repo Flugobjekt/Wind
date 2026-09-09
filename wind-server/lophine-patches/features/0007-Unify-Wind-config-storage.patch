@@ -1,0 +1,61 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Wind <wind@localhost>
+Subject: [PATCH] Unify Wind config storage retaining logical namespaces
+
+diff --git a/src/main/java/me/earthme/luminol/config/ConfigsInstance.java b/src/main/java/me/earthme/luminol/config/ConfigsInstance.java
+--- a/src/main/java/me/earthme/luminol/config/ConfigsInstance.java
++++ b/src/main/java/me/earthme/luminol/config/ConfigsInstance.java
+@@ -228,17 +228,16 @@
+      * Preload configuration with option to keep comments
+      */
+     public void preLoadConfig(boolean keepComments) throws IOException {
+-        baseConfigFolder.mkdirs();
+-
+-        if (!baseConfigFile.exists()) {
+-            baseConfigFile.createNewFile();
+-        }
+-        if (configFileInstance != null) {
+-            configFileInstance.close();
+-        }
+-
+-        configFileInstance = CommentedFileConfig.of(baseConfigFile);
+-        configFileInstance.load();
++        if (java.util.Set.of("luminol", "lophine", "lophine_carpet", "wind").contains(name)
++                && pack.startsWith(name.equals("luminol") ? "me.earthme.luminol." : "fun.bm.")) {
++            configFileInstance = fun.bm.wind.config.WindGlobalConfig.open(name);
++        } else {
++            baseConfigFolder.mkdirs();
++            if (!baseConfigFile.exists()) baseConfigFile.createNewFile();
++            if (configFileInstance != null) configFileInstance.close();
++            configFileInstance = CommentedFileConfig.of(baseConfigFile);
++            configFileInstance.load();
++        }
+ 
+         try {
+             instanceAllModule();
+
+diff --git a/src/main/java/me/earthme/luminol/config/ConfigManager.java b/src/main/java/me/earthme/luminol/config/ConfigManager.java
+--- a/src/main/java/me/earthme/luminol/config/ConfigManager.java
++++ b/src/main/java/me/earthme/luminol/config/ConfigManager.java
+@@ -25,17 +25,17 @@
+ 
+     public static void initConfigs() {
+         registerConfig(builder.of(new java.io.File("wind_config"), "luminol", "wind_global_config.toml", "windconfig", "me.earthme.luminol.config.modules"));
+-        registerConfig(builder.of("lophine", "fun.bm.lophine.config.modules")); // add lophine global config
++        registerConfig(builder.of(new java.io.File("wind_config"), "lophine", "wind_global_config.toml", "lophineconfig", "fun.bm.lophine.config.modules")); // add lophine global config
+         // Lophine start - add carpet config
+         registerConfig(builder.of(
+-                new java.io.File("lophine_config"),
++                new java.io.File("wind_config"),
+                 "lophine_carpet",
+-                "lophine_carpet_config.toml",
++                "wind_global_config.toml",
+                 "lophinecarpetconfig",
+                 "fun.bm.lophine.carpet.config.modules"
+         ));
+         // Lophine end - add carpet config
+-        registerConfig(builder.of(new java.io.File("wind_config"), "wind", "wind_compat_config.toml", "windcompatconfig", "fun.bm.wind.config.modules")); // Wind compatibility config
++        registerConfig(builder.of(new java.io.File("wind_config"), "wind", "wind_global_config.toml", "windcompatconfig", "fun.bm.wind.config.modules")); // Wind compatibility config
+         preLoad();
+     }
+ 

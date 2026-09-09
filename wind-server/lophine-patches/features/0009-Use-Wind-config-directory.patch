@@ -1,0 +1,30 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Wind <wind@localhost>
+Subject: [PATCH] Use canonical Wind config directory
+
+diff --git a/src/main/java/me/earthme/luminol/config/ConfigManager.java b/src/main/java/me/earthme/luminol/config/ConfigManager.java
+--- a/src/main/java/me/earthme/luminol/config/ConfigManager.java
++++ b/src/main/java/me/earthme/luminol/config/ConfigManager.java
+@@ -24,18 +24,18 @@
+     // 3 -> target full path
+ 
+     public static void initConfigs() {
+-        registerConfig(builder.of(new java.io.File("wind_config"), "luminol", "wind_global_config.toml", "windconfig", "me.earthme.luminol.config.modules"));
+-        registerConfig(builder.of(new java.io.File("wind_config"), "lophine", "wind_global_config.toml", "lophineconfig", "fun.bm.lophine.config.modules")); // add lophine global config
++        registerConfig(builder.of(new java.io.File("Wind"), "luminol", "wind_global_config.toml", "windconfig", "me.earthme.luminol.config.modules"));
++        registerConfig(builder.of(new java.io.File("Wind"), "lophine", "wind_global_config.toml", "lophineconfig", "fun.bm.lophine.config.modules")); // add lophine global config
+         // Lophine start - add carpet config
+         registerConfig(builder.of(
+-                new java.io.File("wind_config"),
++                new java.io.File("Wind"),
+                 "lophine_carpet",
+                 "wind_global_config.toml",
+                 "lophinecarpetconfig",
+                 "fun.bm.lophine.carpet.config.modules"
+         ));
+         // Lophine end - add carpet config
+-        registerConfig(builder.of(new java.io.File("wind_config"), "wind", "wind_global_config.toml", "windcompatconfig", "fun.bm.wind.config.modules")); // Wind compatibility config
++        registerConfig(builder.of(new java.io.File("Wind"), "wind", "wind_global_config.toml", "windcompatconfig", "fun.bm.wind.config.modules")); // Wind compatibility config
+         preLoad();
+     }
+ 
