@@ -1,3 +1,15 @@
+> [!WARNING]
+> ### ⚠️ Critical: Server Shutdown & Linear / b_linear Region Formats
+>
+> If you are using any Linear region format (**Linear v1, v2, v3** or **b_linear**), **NEVER force-kill (`kill -9`, SIGKILL, panel crash/stop buttons) the server process!**
+>
+> Always shut down or restart cleanly using `/stop` or `/restart`.
+>
+> **Known risks and limitations with Linear formats:**
+> - **Catastrophic Chunk / Region Corruption:** Linear formats buffer and compress chunks into shared Zstandard/LZ4 data blocks rather than separate Anvil `.mca` sector slots. Abruptly terminating the process while a flush or write-ahead-log (WAL) sync is in progress can corrupt entire region files (up to 1,024 chunks at once).
+> - **Data Loss on Hard Crashes:** If the host machine loses power, suffers an OOM-killer termination, or is abruptly stopped without executing the shutdown hooks, unwritten in-memory chunk buffers cannot be recovered.
+> - **Incompatibility & Tooling Issues:** Linear v3 and non-standard specifications are not supported by external tools (such as map renderers like Dynmap/BlueMap, world converters, or NBT editors). Always keep reliable backups before migrating.
+
 <div align="center">
 
 # Wind
