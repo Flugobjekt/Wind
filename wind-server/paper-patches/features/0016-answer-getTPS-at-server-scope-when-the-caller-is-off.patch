@@ -51,7 +51,7 @@ answer the per-region question, from any thread.
 Kill switch: compat-config.server-tps-off-region=false.
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 6597649f8c8afd8c89c67ba28a7fc49b5f73e2c2..5295369735bbb7b4241fbb723ec5574e2353aaa1 100644
+index ca709ecb76ef9deab144e7e428ee7eabfe8fd711..d6f2b163d8f98454780692d380a4f1fa38475787 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 @@ -2811,6 +2811,13 @@ public final class CraftServer implements Server {

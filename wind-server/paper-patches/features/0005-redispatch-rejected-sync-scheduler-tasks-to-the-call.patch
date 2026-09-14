@@ -7,7 +7,7 @@ Subject: [PATCH] redispatch rejected sync scheduler tasks to the caller's own
 Generalises the per-plugin dispatch rule table. Paper's scheduleSyncDelayedTask means 'the thread you are on, later'; on Folia the nearest true statement is 'the region you are on, later'. Which thread asked is observable, so this is not DEC-19 B1's inference from a contextless Runnable: region tick thread goes to that region, global region goes to the global region, and anything else is still rejected exactly as on stock Folia. Distinct from the DEC-05/N13 sync-to-global shim, which moved region-scoped tasks onto a thread that owns nothing. Fixes GriefPrevention's claim visualization, whose one-tick revert task took PlayerInteractEvent down with it.
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/scheduler/CraftScheduler.java b/src/main/java/org/bukkit/craftbukkit/scheduler/CraftScheduler.java
-index d85a99ea9e9895cd45ca550ab2f58c8443f412df..f1518ce64edaa2d40f9c9038bb489fa2439ed826 100644
+index f54159b75ab1762d121405db44ddb5301e54745c..140f794045c541354928573241b6b2d2dd4cccfb 100644
 --- a/src/main/java/org/bukkit/craftbukkit/scheduler/CraftScheduler.java
 +++ b/src/main/java/org/bukkit/craftbukkit/scheduler/CraftScheduler.java
 @@ -550,6 +550,16 @@ public class CraftScheduler implements BukkitScheduler {

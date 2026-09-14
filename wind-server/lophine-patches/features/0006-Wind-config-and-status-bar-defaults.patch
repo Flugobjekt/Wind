@@ -1,11 +1,14 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Flugobjekt <Fliger>
+Date: Mon, 14 Sep 2026 20:13:53 +0000
 Subject: [PATCH] Wind config and status bar defaults
 
+
 diff --git a/src/main/java/me/earthme/luminol/config/ConfigManager.java b/src/main/java/me/earthme/luminol/config/ConfigManager.java
+index 6b0b1ed3428a3eeee8d9148d35bec079d01f6077..919836ac68d1d4ea35c5b321a3a8e5d88239279d 100644
 --- a/src/main/java/me/earthme/luminol/config/ConfigManager.java
 +++ b/src/main/java/me/earthme/luminol/config/ConfigManager.java
-@@ -24,7 +24,7 @@
+@@ -24,7 +24,7 @@ public class ConfigManager {
      // 3 -> target full path
  
      public static void initConfigs() {
@@ -14,7 +17,7 @@ diff --git a/src/main/java/me/earthme/luminol/config/ConfigManager.java b/src/ma
          registerConfig(builder.of("lophine", "fun.bm.lophine.config.modules")); // add lophine global config
          // Lophine start - add carpet config
          registerConfig(builder.of(
-@@ -35,7 +35,7 @@
+@@ -35,7 +35,7 @@ public class ConfigManager {
                  "fun.bm.lophine.carpet.config.modules"
          ));
          // Lophine end - add carpet config
@@ -23,34 +26,11 @@ diff --git a/src/main/java/me/earthme/luminol/config/ConfigManager.java b/src/ma
          preLoad();
      }
  
-diff --git a/src/main/java/me/earthme/luminol/config/modules/misc/ServerModNameConfig.java b/src/main/java/me/earthme/luminol/config/modules/misc/ServerModNameConfig.java
---- a/src/main/java/me/earthme/luminol/config/modules/misc/ServerModNameConfig.java
-+++ b/src/main/java/me/earthme/luminol/config/modules/misc/ServerModNameConfig.java
-@@ -7,7 +7,7 @@
- @ConfigClassInfo(category = EnumConfigCategory.MISC, name = "server_mod_name")
- public class ServerModNameConfig {
-     @ConfigInfo(name = "name")
--    public static String serverModName = "Lophine";
-+    public static String serverModName = "Wind";
- 
-     @ConfigInfo(name = "vanilla_spoof")
-     public static boolean fakeVanilla = false;
-diff --git a/src/main/java/me/earthme/luminol/config/modules/function/TpsBarConfig.java b/src/main/java/me/earthme/luminol/config/modules/function/TpsBarConfig.java
---- a/src/main/java/me/earthme/luminol/config/modules/function/TpsBarConfig.java
-+++ b/src/main/java/me/earthme/luminol/config/modules/function/TpsBarConfig.java
-@@ -17,7 +17,7 @@
- @ConfigClassInfo(category = EnumConfigCategory.FUNCTION, name = "tpsbar")
- public class TpsBarConfig {
-     @ConfigInfo(name = "enabled")
--    public static boolean tpsbarEnabled = false;
-+    public static boolean tpsbarEnabled = true;
-     @ConfigInfo(name = "format")
-     public static String tpsBarFormat = "<gray>TPS<yellow>:</yellow> <tps> MSPT<yellow>:</yellow> <mspt> Ping<yellow>:</yellow> <ping>ms ChunkHot<yellow>:</yellow> <chunkhot>";
-     @ConfigInfo(name = "bar_color_list")
 diff --git a/src/main/java/me/earthme/luminol/config/modules/function/MembarConfig.java b/src/main/java/me/earthme/luminol/config/modules/function/MembarConfig.java
+index 27369dd634f23782e55734621ad9f1c96b1bc314..9c5af4c6700147920461a99e28a5315a75b857af 100644
 --- a/src/main/java/me/earthme/luminol/config/modules/function/MembarConfig.java
 +++ b/src/main/java/me/earthme/luminol/config/modules/function/MembarConfig.java
-@@ -17,7 +17,7 @@
+@@ -17,7 +17,7 @@ import java.util.List;
  @ConfigClassInfo(category = EnumConfigCategory.FUNCTION, name = "membar")
  public class MembarConfig {
      @ConfigInfo(name = "enabled")
@@ -60,9 +40,10 @@ diff --git a/src/main/java/me/earthme/luminol/config/modules/function/MembarConf
      public static String memBarFormat = "<gray>Memory usage <yellow>:</yellow> <used>MB<yellow>/</yellow><available>MB";
      @ConfigInfo(name = "bar_color_list")
 diff --git a/src/main/java/me/earthme/luminol/config/modules/function/RegionBarConfig.java b/src/main/java/me/earthme/luminol/config/modules/function/RegionBarConfig.java
+index 25a2fe150df4335074e811dc21b0036702f532d1..3c4943aafa535e4e3ee430a1dff9caf2dc3f6a18 100644
 --- a/src/main/java/me/earthme/luminol/config/modules/function/RegionBarConfig.java
 +++ b/src/main/java/me/earthme/luminol/config/modules/function/RegionBarConfig.java
-@@ -17,7 +17,7 @@
+@@ -17,7 +17,7 @@ import java.util.List;
  @ConfigClassInfo(category = EnumConfigCategory.FUNCTION, name = "regionbar")
  public class RegionBarConfig {
      @ConfigInfo(name = "enabled")
@@ -71,3 +52,29 @@ diff --git a/src/main/java/me/earthme/luminol/config/modules/function/RegionBarC
      @ConfigInfo(name = "format")
      public static String regionBarFormat = "<gray>Util<yellow>:</yellow> <util> Chunks<yellow>:</yellow> <green><chunks></green> Players<yellow>:</yellow> <green><players></green> Entities<yellow>:</yellow> <green><entities></green>";
      @ConfigInfo(name = "bar_color_list")
+diff --git a/src/main/java/me/earthme/luminol/config/modules/function/TpsBarConfig.java b/src/main/java/me/earthme/luminol/config/modules/function/TpsBarConfig.java
+index bbc6ffcb7a9fe5a9d6d4716a1e83cf41554e37cc..a47dcdab5431bd44e79ccc90f8d613762fe39c59 100644
+--- a/src/main/java/me/earthme/luminol/config/modules/function/TpsBarConfig.java
++++ b/src/main/java/me/earthme/luminol/config/modules/function/TpsBarConfig.java
+@@ -17,7 +17,7 @@ import java.util.List;
+ @ConfigClassInfo(category = EnumConfigCategory.FUNCTION, name = "tpsbar")
+ public class TpsBarConfig {
+     @ConfigInfo(name = "enabled")
+-    public static boolean tpsbarEnabled = false;
++    public static boolean tpsbarEnabled = true;
+     @ConfigInfo(name = "format")
+     public static String tpsBarFormat = "<gray>TPS<yellow>:</yellow> <tps> MSPT<yellow>:</yellow> <mspt> Ping<yellow>:</yellow> <ping>ms ChunkHot<yellow>:</yellow> <chunkhot>";
+     @ConfigInfo(name = "bar_color_list")
+diff --git a/src/main/java/me/earthme/luminol/config/modules/misc/ServerModNameConfig.java b/src/main/java/me/earthme/luminol/config/modules/misc/ServerModNameConfig.java
+index 347f9462a97d2b150730c81d4fbded57291802b9..528eb749b2312162b1c53cbe3af41f7056371410 100644
+--- a/src/main/java/me/earthme/luminol/config/modules/misc/ServerModNameConfig.java
++++ b/src/main/java/me/earthme/luminol/config/modules/misc/ServerModNameConfig.java
+@@ -7,7 +7,7 @@ import me.earthme.luminol.enums.EnumConfigCategory;
+ @ConfigClassInfo(category = EnumConfigCategory.MISC, name = "server_mod_name")
+ public class ServerModNameConfig {
+     @ConfigInfo(name = "name")
+-    public static String serverModName = "Lophine";
++    public static String serverModName = "Wind";
+ 
+     @ConfigInfo(name = "vanilla_spoof")
+     public static boolean fakeVanilla = false;

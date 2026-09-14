@@ -9,7 +9,7 @@ ThreadedRegionizer owns it, which region the calling thread is ticking, and what
 level and position the CommandSourceStack in hand carries. Read-only.
 
 diff --git a/src/main/java/me/earthme/luminol/commands/CommandRegister.java b/src/main/java/me/earthme/luminol/commands/CommandRegister.java
-index a4821ce79cfcf8ebe5926f8ed382dad50b260532..5809844142f741544ad3bafce3f7b7ec4b27bd2b 100644
+index a4821ce79cfcf8ebe5926f8ed382dad50b260532..cdb9bd23c1a3587d304983a9ebe85a7875d55deb 100644
 --- a/src/main/java/me/earthme/luminol/commands/CommandRegister.java
 +++ b/src/main/java/me/earthme/luminol/commands/CommandRegister.java
 @@ -10,5 +10,6 @@ public class CommandRegister {

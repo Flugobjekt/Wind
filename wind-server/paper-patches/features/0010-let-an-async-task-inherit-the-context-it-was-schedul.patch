@@ -28,7 +28,7 @@ with genuinely cross-region access still failing loudly at the access - the same
 bargain DEC-54 accepted for 0029.
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/scheduler/CraftAsyncTask.java b/src/main/java/org/bukkit/craftbukkit/scheduler/CraftAsyncTask.java
-index e4e2e42d0ca25df7fe9f2dd4275610e45fcb2c84..a5931d31a04bf59bec516d8b29f0082483e9ee8e 100644
+index e4e2e42d0ca25df7fe9f2dd4275610e45fcb2c84..c7c4b241c117cdc9dbfcc1abfe9159f3446389d3 100644
 --- a/src/main/java/org/bukkit/craftbukkit/scheduler/CraftAsyncTask.java
 +++ b/src/main/java/org/bukkit/craftbukkit/scheduler/CraftAsyncTask.java
 @@ -11,6 +11,12 @@ class CraftAsyncTask extends CraftTask {

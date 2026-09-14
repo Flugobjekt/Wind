@@ -77,7 +77,7 @@ Research and measurements: project-docs evidence 20260729d-t01-essentialsx-calls
 and 20260730b-essentialsx-economy-serialization.md.
 
 diff --git a/src/main/java/io/papermc/paper/command/brigadier/bukkit/BukkitCommandNode.java b/src/main/java/io/papermc/paper/command/brigadier/bukkit/BukkitCommandNode.java
-index 5c52b1563d20d7e977a5bb958c18b19dec5c365a..28fbdf2da69a1f97721a050980dc16160d566fa1 100644
+index 5c52b1563d20d7e977a5bb958c18b19dec5c365a..3a7c211cf80476ea78db50654644dd27cbcc0e5f 100644
 --- a/src/main/java/io/papermc/paper/command/brigadier/bukkit/BukkitCommandNode.java
 +++ b/src/main/java/io/papermc/paper/command/brigadier/bukkit/BukkitCommandNode.java
 @@ -80,6 +80,20 @@ public class BukkitCommandNode extends LiteralCommandNode<CommandSourceStack> {
@@ -102,7 +102,7 @@ index 5c52b1563d20d7e977a5bb958c18b19dec5c365a..28fbdf2da69a1f97721a050980dc1616
  
              // return true as command was handled
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index e8359235c5fa0681c2d0d12cf66d6abbc0fe4d97..0b6859440bfcc2b58dcfe8fc2192865f27b25593 100644
+index e8359235c5fa0681c2d0d12cf66d6abbc0fe4d97..c7de7b85e7f15f33148ba6fe050e1474bd4f04e4 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 @@ -266,7 +266,7 @@ public final class CraftServer implements Server {

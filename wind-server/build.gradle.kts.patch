@@ -69,9 +69,9 @@
 +            "Specification-Title" to "Wind", // Lophine - Rebrand // Wind - Rebrand
              "Specification-Version" to project.version,
 -            "Specification-Vendor" to "LophineLabs", // Lophine - Rebrand
-+            "Specification-Vendor" to "Flugobjekt", // Wind - Rebrand
 -            "Brand-Id" to "lophinelabs:lophine", // Lophine - Rebrand
 -            "Brand-Name" to "Lophine", // Lophine - Rebrand
++            "Specification-Vendor" to "Flugobjekt", // Wind - Rebrand
 +            "Brand-Id" to "flugobjekt:wind", // Lophine - Rebrand // Wind - Rebrand
 +            "Brand-Name" to "Wind", // Lophine - Rebrand // Wind - Rebrand
              "Build-Number" to (build ?: ""),

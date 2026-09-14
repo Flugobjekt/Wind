@@ -5,7 +5,7 @@ Subject: [PATCH] implement remakeConnections instead of throwing
 
 
 diff --git a/src/main/java/me/earthme/luminol/utils/FoliaServerWaypointManager.java b/src/main/java/me/earthme/luminol/utils/FoliaServerWaypointManager.java
-index 019266803f1452cb1e76350da8edae10a77020ac..1a8f7881d6030ca910687fe225d9df90ca19f831 100644
+index 019266803f1452cb1e76350da8edae10a77020ac..d10f29d79cd768efc5d721c5ec9f8ed537ea1fcb 100644
 --- a/src/main/java/me/earthme/luminol/utils/FoliaServerWaypointManager.java
 +++ b/src/main/java/me/earthme/luminol/utils/FoliaServerWaypointManager.java
 @@ -38,10 +38,25 @@ public class FoliaServerWaypointManager extends ServerWaypointManager {

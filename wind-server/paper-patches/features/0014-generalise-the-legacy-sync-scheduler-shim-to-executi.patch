@@ -47,7 +47,7 @@ per distinct callsite and DEBUG thereafter, instead of WARN on every single
 dispatch - which is what was flooding the production console.
 
 diff --git a/src/main/java/io/papermc/paper/plugin/manager/PaperEventManager.java b/src/main/java/io/papermc/paper/plugin/manager/PaperEventManager.java
-index 0fce6dc8bffc341da2e7242422b4153b2743aa44..8316921c05f4bc791f5249df0e72dbb09f0cf5c4 100644
+index 0fce6dc8bffc341da2e7242422b4153b2743aa44..a11a082ba3a2ced6070c40104b3c9b53373ccb8d 100644
 --- a/src/main/java/io/papermc/paper/plugin/manager/PaperEventManager.java
 +++ b/src/main/java/io/papermc/paper/plugin/manager/PaperEventManager.java
 @@ -62,6 +62,29 @@ class PaperEventManager {
@@ -81,7 +81,7 @@ index 0fce6dc8bffc341da2e7242422b4153b2743aa44..8316921c05f4bc791f5249df0e72dbb0
              if (!registration.getPlugin().isEnabled()) {
                  continue;
 diff --git a/src/main/java/io/papermc/paper/plugin/manager/PaperPluginInstanceManager.java b/src/main/java/io/papermc/paper/plugin/manager/PaperPluginInstanceManager.java
-index f7552dcbaa1c9060254bd6490324a022c8d25937..2c5792223d2f78ce0bfa991182f2be378ca9e90c 100644
+index e2fb46f4b1d918bd7765922f944e0dc5e4cc360e..5c1d32bf9f7063545e64ea5ad6d8fe54714fbe41 100644
 --- a/src/main/java/io/papermc/paper/plugin/manager/PaperPluginInstanceManager.java
 +++ b/src/main/java/io/papermc/paper/plugin/manager/PaperPluginInstanceManager.java
 @@ -278,6 +278,15 @@ class PaperPluginInstanceManager {
@@ -101,7 +101,7 @@ index f7552dcbaa1c9060254bd6490324a022c8d25937..2c5792223d2f78ce0bfa991182f2be37
          try {
              this.server.getGlobalRegionScheduler().cancelTasks(plugin);
 diff --git a/src/main/java/org/bukkit/craftbukkit/scheduler/CraftAsyncTask.java b/src/main/java/org/bukkit/craftbukkit/scheduler/CraftAsyncTask.java
-index a5931d31a04bf59bec516d8b29f0082483e9ee8e..9cfed92eaee7811271708c0615c5f092caa9d866 100644
+index c7c4b241c117cdc9dbfcc1abfe9159f3446389d3..b28da48a209b3e32726142eee4020048682e2391 100644
 --- a/src/main/java/org/bukkit/craftbukkit/scheduler/CraftAsyncTask.java
 +++ b/src/main/java/org/bukkit/craftbukkit/scheduler/CraftAsyncTask.java
 @@ -11,11 +11,12 @@ class CraftAsyncTask extends CraftTask {
@@ -134,7 +134,7 @@ index a5931d31a04bf59bec516d8b29f0082483e9ee8e..9cfed92eaee7811271708c0615c5f092
          } catch (final Throwable t) {
              thrown = t;
 diff --git a/src/main/java/org/bukkit/craftbukkit/scheduler/CraftScheduler.java b/src/main/java/org/bukkit/craftbukkit/scheduler/CraftScheduler.java
-index f1518ce64edaa2d40f9c9038bb489fa2439ed826..954ab2b7e6812d5043bfccc801306bbcbf31688d 100644
+index 140f794045c541354928573241b6b2d2dd4cccfb..0bf484628f9457257c4047bf1831509245e17a37 100644
 --- a/src/main/java/org/bukkit/craftbukkit/scheduler/CraftScheduler.java
 +++ b/src/main/java/org/bukkit/craftbukkit/scheduler/CraftScheduler.java
 @@ -273,6 +273,16 @@ public class CraftScheduler implements BukkitScheduler {

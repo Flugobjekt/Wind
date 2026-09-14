@@ -41,7 +41,7 @@ restore made reachable:
    the same kill switch, matching Paper's disable semantics.
 
 diff --git a/src/main/java/io/papermc/paper/plugin/manager/PaperPluginInstanceManager.java b/src/main/java/io/papermc/paper/plugin/manager/PaperPluginInstanceManager.java
-index 455e8c24d98fcd0ae0a349737a0e709a05ed9170..54e966cb1fb51fc74162748a39bb7172758bd5c0 100644
+index 455e8c24d98fcd0ae0a349737a0e709a05ed9170..149dcf7c776809a12fd61e90ee1fbb44b03b474d 100644
 --- a/src/main/java/io/papermc/paper/plugin/manager/PaperPluginInstanceManager.java
 +++ b/src/main/java/io/papermc/paper/plugin/manager/PaperPluginInstanceManager.java
 @@ -260,6 +260,19 @@ class PaperPluginInstanceManager {
@@ -65,7 +65,7 @@ index 455e8c24d98fcd0ae0a349737a0e709a05ed9170..54e966cb1fb51fc74162748a39bb7172
          // Paper start - Folia schedulers
          try {
 diff --git a/src/main/java/io/papermc/paper/threadedregions/scheduler/FoliaGlobalRegionScheduler.java b/src/main/java/io/papermc/paper/threadedregions/scheduler/FoliaGlobalRegionScheduler.java
-index f20f2735fbb4d1e38d576eafe18a0054a45aa59e..11c68f3cdeae65eff232ebfbc9ebd7cf600305d1 100644
+index f20f2735fbb4d1e38d576eafe18a0054a45aa59e..ffe92bf8a22b097c341cba06f1087d8986a75e7f 100644
 --- a/src/main/java/io/papermc/paper/threadedregions/scheduler/FoliaGlobalRegionScheduler.java
 +++ b/src/main/java/io/papermc/paper/threadedregions/scheduler/FoliaGlobalRegionScheduler.java
 @@ -20,6 +20,19 @@ public class FoliaGlobalRegionScheduler implements GlobalRegionScheduler {
@@ -89,7 +89,7 @@ index f20f2735fbb4d1e38d576eafe18a0054a45aa59e..11c68f3cdeae65eff232ebfbc9ebd7cf
          synchronized (this.stateLock) {
              ++this.tickCount;
 diff --git a/src/main/java/org/bukkit/craftbukkit/scheduler/CraftScheduler.java b/src/main/java/org/bukkit/craftbukkit/scheduler/CraftScheduler.java
-index c4dcddc4db02ed3641d05fae31ead7c13205f841..d85a99ea9e9895cd45ca550ab2f58c8443f412df 100644
+index c4dcddc4db02ed3641d05fae31ead7c13205f841..f54159b75ab1762d121405db44ddb5301e54745c 100644
 --- a/src/main/java/org/bukkit/craftbukkit/scheduler/CraftScheduler.java
 +++ b/src/main/java/org/bukkit/craftbukkit/scheduler/CraftScheduler.java
 @@ -273,6 +273,15 @@ public class CraftScheduler implements BukkitScheduler {

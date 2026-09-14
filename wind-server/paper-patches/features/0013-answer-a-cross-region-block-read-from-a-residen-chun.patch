@@ -5,7 +5,7 @@ Subject: [PATCH] answer a cross-region block read from a residen chunk
 
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/block/CraftBlock.java b/src/main/java/org/bukkit/craftbukkit/block/CraftBlock.java
-index b5dd9e16d11488318ef09b3d1adb614b45332d0c..64e2bebf4383b9b7c21102fc15f59f1b3676d3d7 100644
+index b5dd9e16d11488318ef09b3d1adb614b45332d0c..b3733441ddf6a02ae76dd1293162c740006866cc 100644
 --- a/src/main/java/org/bukkit/craftbukkit/block/CraftBlock.java
 +++ b/src/main/java/org/bukkit/craftbukkit/block/CraftBlock.java
 @@ -82,6 +82,15 @@ public class CraftBlock implements Block {

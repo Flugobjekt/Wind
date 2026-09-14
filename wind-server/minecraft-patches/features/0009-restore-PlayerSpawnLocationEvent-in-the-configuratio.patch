@@ -24,7 +24,7 @@ afterwards and still starts from this one's result, which is Paper's ordering.
 Kill switch: event-config.spawn-location-event=false.
 
 diff --git a/net/minecraft/server/network/config/PrepareSpawnTask.java b/net/minecraft/server/network/config/PrepareSpawnTask.java
-index 854f8954ccfd8c34c9f9c91fd1805260f9b429b5..e78fe44bb1befb4e84a7064cbba5f4b0f813a2a1 100644
+index 854f8954ccfd8c34c9f9c91fd1805260f9b429b5..22d92c882f21f2cab9bf6e3b1d5c30002fbe3f9d 100644
 --- a/net/minecraft/server/network/config/PrepareSpawnTask.java
 +++ b/net/minecraft/server/network/config/PrepareSpawnTask.java
 @@ -240,7 +240,22 @@ public class PrepareSpawnTask implements ConfigurationTask {

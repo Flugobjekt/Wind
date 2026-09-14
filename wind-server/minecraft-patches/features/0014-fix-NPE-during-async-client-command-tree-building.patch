@@ -51,7 +51,7 @@ index da387d68cf74519da91dc1ee6d49ee44ca3c430b..dcafae28c457c9295a4928a10617e445
          this.literals.clear();
          this.arguments.clear();
 diff --git a/net/minecraft/commands/Commands.java b/net/minecraft/commands/Commands.java
-index 82af03649c7537274aa54ed942e4aae589b97888..d11149f31b9c1e22e06d37438179236277f45090 100644
+index 82af03649c7537274aa54ed942e4aae589b97888..c6df69ffd70aa9c566e498f7bd614550020c7b2b 100644
 --- a/net/minecraft/commands/Commands.java
 +++ b/net/minecraft/commands/Commands.java
 @@ -564,10 +564,12 @@ public class Commands {

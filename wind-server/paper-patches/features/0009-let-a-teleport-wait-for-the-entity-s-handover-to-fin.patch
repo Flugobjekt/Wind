@@ -26,7 +26,7 @@ calling thread does not wait. Inline, this window can only produce false, so
 this widens and never narrows.
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/entity/CraftEntity.java b/src/main/java/org/bukkit/craftbukkit/entity/CraftEntity.java
-index b10a72af64aff0bb3683854ab6fb841874f786c4..fbdd2b02c9298c21c598d04531a577b8c0b1ec4d 100644
+index 8b11c239e4590f97d480e50b943d3f5ac1a50922..15d2ee3202c3dda72d43608474451bb7963833af 100644
 --- a/src/main/java/org/bukkit/craftbukkit/entity/CraftEntity.java
 +++ b/src/main/java/org/bukkit/craftbukkit/entity/CraftEntity.java
 @@ -1198,7 +1198,12 @@ public abstract class CraftEntity implements org.bukkit.entity.Entity {

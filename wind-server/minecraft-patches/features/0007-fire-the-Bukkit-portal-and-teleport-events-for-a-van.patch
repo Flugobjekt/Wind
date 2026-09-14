@@ -52,7 +52,7 @@ off by up to the portal search radius.
 Kill switch: event-config.portal-events=false.
 
 diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity/Entity.java
-index c1ea3d7df094e161c4389692d41924938117ad36..1bf735dea2a892ac710afd1a369d0512e609bc48 100644
+index d3f2239e79da37f041585f6bf49babbd6e6f2b5a..9558477feaa582c1395fda37934d58f8a8ec2fa8 100644
 --- a/net/minecraft/world/entity/Entity.java
 +++ b/net/minecraft/world/entity/Entity.java
 @@ -4763,13 +4763,14 @@ public abstract class Entity

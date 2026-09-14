@@ -24,7 +24,7 @@ the hot path. The player's board override becomes volatile for the same
 cross-thread readers.
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/entity/CraftPlayer.java b/src/main/java/org/bukkit/craftbukkit/entity/CraftPlayer.java
-index cae2422c607344dafa2b43ccb97b0db936517391..e0f667b680aeba37d83cc225ec624ca4fd168038 100644
+index a3c9ba4f39cc4e09f336e576a6da0b4f2d9aa599..cf2bc6b3734fbd09f13a9b917804ee03430ffcd0 100644
 --- a/src/main/java/org/bukkit/craftbukkit/entity/CraftPlayer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/entity/CraftPlayer.java
 @@ -246,7 +246,7 @@ public class CraftPlayer extends CraftHumanEntity implements Player, PluginMessa
@@ -37,7 +37,7 @@ index cae2422c607344dafa2b43ccb97b0db936517391..e0f667b680aeba37d83cc225ec624ca4
  
      // Folia start - region threading
 diff --git a/src/main/java/org/bukkit/craftbukkit/scoreboard/CraftScoreboard.java b/src/main/java/org/bukkit/craftbukkit/scoreboard/CraftScoreboard.java
-index b959fe4311fc6cbae3dcc052ef4710f8c8aefec6..353729b7fcf42fa863d4ddb48e325a4f68270b10 100644
+index b959fe4311fc6cbae3dcc052ef4710f8c8aefec6..5ac4768f8430ab38c59733955302dd5de04fbb5c 100644
 --- a/src/main/java/org/bukkit/craftbukkit/scoreboard/CraftScoreboard.java
 +++ b/src/main/java/org/bukkit/craftbukkit/scoreboard/CraftScoreboard.java
 @@ -32,7 +32,13 @@ public final class CraftScoreboard implements org.bukkit.scoreboard.Scoreboard {
@@ -84,7 +84,7 @@ index b959fe4311fc6cbae3dcc052ef4710f8c8aefec6..353729b7fcf42fa863d4ddb48e325a4f
          this.getHandle().setDisplayObjective(CraftScoreboardTranslations.fromBukkitSlot(slot), null);
      }
 diff --git a/src/main/java/org/bukkit/craftbukkit/scoreboard/CraftScoreboardManager.java b/src/main/java/org/bukkit/craftbukkit/scoreboard/CraftScoreboardManager.java
-index ab76c7f9bb0a4980a07a4d08c0d3ecadbca9668b..528f831660633600ac10af3d92f446ad94551e55 100644
+index ab76c7f9bb0a4980a07a4d08c0d3ecadbca9668b..4e87f3db1a3796801807252e0ddd22cff830a6c8 100644
 --- a/src/main/java/org/bukkit/craftbukkit/scoreboard/CraftScoreboardManager.java
 +++ b/src/main/java/org/bukkit/craftbukkit/scoreboard/CraftScoreboardManager.java
 @@ -22,7 +22,12 @@ import org.bukkit.scoreboard.ScoreboardManager;

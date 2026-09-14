@@ -1,11 +1,14 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Wind <wind@localhost>
+Date: Mon, 14 Sep 2026 20:13:53 +0000
 Subject: [PATCH] Store Kaiiju entity limits in the Luminol namespace
 
+
 diff --git a/src/main/java/dev/kaiijumc/kaiiju/KaiijuEntityLimits.java b/src/main/java/dev/kaiijumc/kaiiju/KaiijuEntityLimits.java
+index 331e6f91b800652a28eb97310405f2db86af3346..6bfb8c46a9a0e08e40b11ac8304b59e1a98d0d1c 100644
 --- a/src/main/java/dev/kaiijumc/kaiiju/KaiijuEntityLimits.java
 +++ b/src/main/java/dev/kaiijumc/kaiiju/KaiijuEntityLimits.java
-@@ -37,14 +37,12 @@
+@@ -37,14 +37,12 @@ import java.util.logging.Level;
  @SuppressWarnings("unused")
  public class KaiijuEntityLimits {
      private static final Logger LOGGER = LogUtils.getLogger();
@@ -20,7 +23,7 @@ diff --git a/src/main/java/dev/kaiijumc/kaiiju/KaiijuEntityLimits.java b/src/mai
      public static YamlConfiguration entityLimitsConfig;
      public static boolean enabled = false;
  
-@@ -53,31 +51,8 @@
+@@ -53,31 +51,8 @@ public class KaiijuEntityLimits {
      }
  
      private static void init(boolean setup) {
@@ -54,11 +57,11 @@ diff --git a/src/main/java/dev/kaiijumc/kaiiju/KaiijuEntityLimits.java b/src/mai
  
          enabled = entityLimitsConfig.getBoolean("enabled");
  
-
 diff --git a/src/main/java/me/earthme/luminol/config/ConfigsInstance.java b/src/main/java/me/earthme/luminol/config/ConfigsInstance.java
+index fa98bcedf2138f8fd71d7542bcba130c21afe80a..9f4ad33d82f5472c948ae561ebca53a6112a1751 100644
 --- a/src/main/java/me/earthme/luminol/config/ConfigsInstance.java
 +++ b/src/main/java/me/earthme/luminol/config/ConfigsInstance.java
-@@ -967,6 +967,14 @@
+@@ -967,6 +967,14 @@ public class ConfigsInstance implements LuminolConfigsInstance {
              validValues.put(key, configFileInstance.get(key));
              validComments.put(key, configFileInstance.getComment(key));
          }

@@ -1,11 +1,14 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Wind <wind@localhost>
+Date: Mon, 14 Sep 2026 20:13:53 +0000
 Subject: [PATCH] Use canonical Wind config directory
 
+
 diff --git a/src/main/java/me/earthme/luminol/config/ConfigManager.java b/src/main/java/me/earthme/luminol/config/ConfigManager.java
+index a76958d24daed05c0fc170fb852b0cf14256f01c..65c19166827bfc539498166522c1c9fd7fa92762 100644
 --- a/src/main/java/me/earthme/luminol/config/ConfigManager.java
 +++ b/src/main/java/me/earthme/luminol/config/ConfigManager.java
-@@ -24,18 +24,18 @@
+@@ -24,18 +24,18 @@ public class ConfigManager {
      // 3 -> target full path
  
      public static void initConfigs() {

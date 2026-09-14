@@ -30,7 +30,7 @@ a teleport Paper would also have reported, and no Bukkit API overload produces
 UNKNOWN by default.
 
 diff --git a/src/main/java/io/papermc/paper/plugin/manager/PaperPluginInstanceManager.java b/src/main/java/io/papermc/paper/plugin/manager/PaperPluginInstanceManager.java
-index 54e966cb1fb51fc74162748a39bb7172758bd5c0..f7552dcbaa1c9060254bd6490324a022c8d25937 100644
+index 149dcf7c776809a12fd61e90ee1fbb44b03b474d..e2fb46f4b1d918bd7765922f944e0dc5e4cc360e 100644
 --- a/src/main/java/io/papermc/paper/plugin/manager/PaperPluginInstanceManager.java
 +++ b/src/main/java/io/papermc/paper/plugin/manager/PaperPluginInstanceManager.java
 @@ -197,6 +197,10 @@ class PaperPluginInstanceManager {

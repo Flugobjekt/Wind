@@ -5,7 +5,7 @@ Subject: [PATCH] Rebrand to Wind
 
 
 diff --git a/src/main/java/io/papermc/paper/ServerBuildInfo.java b/src/main/java/io/papermc/paper/ServerBuildInfo.java
-index d9127bc6c5801521a5dd1171e4e215f241934034..9f821b5538f191d6b9af36e07f531ee0090784d1 100644
+index 378c78b9321cbb96d95f0fb0d8c9c2ca2a283752..e32db891352c70b33daf9bf9e96ddb0534ee9f80 100644
 --- a/src/main/java/io/papermc/paper/ServerBuildInfo.java
 +++ b/src/main/java/io/papermc/paper/ServerBuildInfo.java
 @@ -28,6 +28,13 @@ public interface ServerBuildInfo {

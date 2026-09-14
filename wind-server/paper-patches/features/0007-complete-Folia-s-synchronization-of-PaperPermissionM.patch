@@ -23,7 +23,7 @@ removePermission is fixed alongside it with no crash of its own on record: a
 class synchronized everywhere except one writer is not synchronized.
 
 diff --git a/src/main/java/io/papermc/paper/plugin/manager/PaperPermissionManager.java b/src/main/java/io/papermc/paper/plugin/manager/PaperPermissionManager.java
-index 9ddbb2d72e11c6abbbdb866f3010f276efceda41..4ebf520126ad9a9e96ce394e91660751c2fbc8d3 100644
+index 9ddbb2d72e11c6abbbdb866f3010f276efceda41..3a44502fa602ae00b968da678bce4f7947e1a653 100644
 --- a/src/main/java/io/papermc/paper/plugin/manager/PaperPermissionManager.java
 +++ b/src/main/java/io/papermc/paper/plugin/manager/PaperPermissionManager.java
 @@ -77,7 +77,21 @@ abstract class PaperPermissionManager implements PermissionManager {

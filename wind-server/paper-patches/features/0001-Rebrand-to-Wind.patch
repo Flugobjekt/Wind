@@ -5,7 +5,7 @@ Subject: [PATCH] Rebrand to Wind
 
 
 diff --git a/src/main/java/com/destroystokyo/paper/Metrics.java b/src/main/java/com/destroystokyo/paper/Metrics.java
-index ce97076bd642bff22c9fc10212e19f81327d7c5a..8f7a5bb2a20b8809ae1c8dc7b6dfad7e1b14f2b2 100644
+index ce97076bd642bff22c9fc10212e19f81327d7c5a..c13ce0861d6f2cdd9736d37f6388ec934dd212b7 100644
 --- a/src/main/java/com/destroystokyo/paper/Metrics.java
 +++ b/src/main/java/com/destroystokyo/paper/Metrics.java
 @@ -593,7 +593,7 @@ public class Metrics {
@@ -32,7 +32,7 @@ index ce97076bd642bff22c9fc10212e19f81327d7c5a..8f7a5bb2a20b8809ae1c8dc7b6dfad7e
                  metrics.addCustomChart(new Metrics.DrilldownPie("java_version", () -> {
                      Map<String, Map<String, Integer>> map = new HashMap<>();
 diff --git a/src/main/java/com/destroystokyo/paper/PaperVersionFetcher.java b/src/main/java/com/destroystokyo/paper/PaperVersionFetcher.java
-index 37ca11405d4f77e3acf7fc3c175d1f9ced8f0f20..8a3534e4fe5a75c4aa8ec79e3ea6d74856536221 100644
+index 37ca11405d4f77e3acf7fc3c175d1f9ced8f0f20..49f2f5b42609ef11adb6a498282e8b13c4a3c287 100644
 --- a/src/main/java/com/destroystokyo/paper/PaperVersionFetcher.java
 +++ b/src/main/java/com/destroystokyo/paper/PaperVersionFetcher.java
 @@ -40,8 +40,8 @@ public class PaperVersionFetcher implements VersionFetcher {
@@ -47,7 +47,7 @@ index 37ca11405d4f77e3acf7fc3c175d1f9ced8f0f20..8a3534e4fe5a75c4aa8ec79e3ea6d748
      private static final String USER_AGENT = BUILD_INFO.brandName() + "/" + BUILD_INFO.asString(VERSION_SIMPLE) + " (https://papermc.io)";
      private static final Gson GSON = new Gson();
 diff --git a/src/main/java/io/papermc/paper/ServerBuildInfoImpl.java b/src/main/java/io/papermc/paper/ServerBuildInfoImpl.java
-index 883cb95cb4ef72e40af7073f76fc2f3219a51127..12f43a8acf95daa96894c73e0e6a88ce3b31777c 100644
+index 883cb95cb4ef72e40af7073f76fc2f3219a51127..07c0a15ca3406aec38d002287a217aa175137aa3 100644
 --- a/src/main/java/io/papermc/paper/ServerBuildInfoImpl.java
 +++ b/src/main/java/io/papermc/paper/ServerBuildInfoImpl.java
 @@ -32,6 +32,7 @@ public record ServerBuildInfoImpl(
@@ -80,7 +80,7 @@ index 883cb95cb4ef72e40af7073f76fc2f3219a51127..12f43a8acf95daa96894c73e0e6a88ce
  
      @Override
 diff --git a/src/main/java/org/spigotmc/WatchdogThread.java b/src/main/java/org/spigotmc/WatchdogThread.java
-index f5462b42c8231a5cf58a24e5fc5dc77bd550eb0a..f19e3b2132fea7b79e952549eb9a4e5a4e6f9446 100644
+index f5462b42c8231a5cf58a24e5fc5dc77bd550eb0a..cff87d3a8ead461958052b1f7503980b8b4af737 100644
 --- a/src/main/java/org/spigotmc/WatchdogThread.java
 +++ b/src/main/java/org/spigotmc/WatchdogThread.java
 @@ -81,7 +81,7 @@ public class WatchdogThread extends ca.spottedleaf.moonrise.common.util.TickThre
