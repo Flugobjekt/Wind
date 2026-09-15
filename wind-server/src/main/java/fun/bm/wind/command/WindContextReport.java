@@ -332,7 +332,8 @@ public final class WindContextReport {
             final ServerPlayer player = parsed.findSinglePlayer(source);
             return describe(player, source);
         } catch (final Exception e) {
-            return Component.text("<" + e.getClass().getSimpleName() + ": " + e.getMessage() + ">", ERROR);
+            com.mojang.logging.LogUtils.getLogger().warn("[Wind] Error resolving selector single '{}'", selector, e);
+            return Component.text("<Error resolving selector>", ERROR);
         }
     }
 
@@ -352,7 +353,8 @@ public final class WindContextReport {
             }
             return builder.build();
         } catch (final Exception e) {
-            return Component.text("<" + e.getClass().getSimpleName() + ": " + e.getMessage() + ">", ERROR);
+            com.mojang.logging.LogUtils.getLogger().warn("[Wind] Error resolving selector all '{}'", selector, e);
+            return Component.text("<Error resolving selector>", ERROR);
         }
     }
 
