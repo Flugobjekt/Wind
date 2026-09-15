@@ -8,6 +8,9 @@ import com.electronwill.nightconfig.core.utils.CommentedConfigWrapper;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.*;
+import java.nio.file.attribute.FileAttribute;
+import java.nio.file.attribute.PosixFilePermission;
+import java.nio.file.attribute.PosixFilePermissions;
 import java.util.*;
 import java.util.function.Function;
 
@@ -134,7 +137,15 @@ public final class WindGlobalConfig extends CommentedConfigWrapper<CommentedConf
     }
 
     private static void writeAtomically(CommentedConfig config, Path path) throws IOException {
-        Path temporary = Files.createTempFile(path.getParent(), "wind-global-", ".toml");
+        Path temporary;
+        try {
+            FileAttribute<Set<PosixFilePermission>> attr = PosixFilePermissions.asFileAttribute(PosixFilePermissions.fromString("rw-------"));
+            temporary = Files.createTempFile(path.getParent(), "wind-global-", ".toml", attr);
+        } catch (UnsupportedOperationException e) {
+            // Fallback for non-POSIX file systems (e.g. Windows)
+            temporary = Files.createTempFile(path.getParent(), "wind-global-", ".toml");
+        }
+
         try {
             try (CommentedFileConfig output = CommentedFileConfig.builder(temporary).sync().build()) {
                 merge(output, config, path.toString());
