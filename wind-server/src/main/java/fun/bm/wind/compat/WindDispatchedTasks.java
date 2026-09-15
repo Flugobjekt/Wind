@@ -43,7 +43,7 @@ public final class WindDispatchedTasks {
      * @param craftTask the Bukkit-side task handed back to the plugin
      * @param scheduled the Folia task that will actually run it
      */
-    private record Entry(CraftTask craftTask, ScheduledTask scheduled) {
+    private record Entry(CraftTask craftTask, ScheduledTask scheduled, Plugin plugin) {
     }
 
     private static final Map<Integer, Entry> BY_ID = new ConcurrentHashMap<>();
@@ -57,7 +57,7 @@ public final class WindDispatchedTasks {
      */
     public static void track(final Plugin plugin, final CraftTask craftTask, final ScheduledTask scheduled) {
         final int id = craftTask.getTaskId();
-        BY_ID.put(id, new Entry(craftTask, scheduled));
+        BY_ID.put(id, new Entry(craftTask, scheduled, plugin));
         BY_PLUGIN.computeIfAbsent(plugin, p -> new ConcurrentHashMap<>()).put(id, Boolean.TRUE);
     }
 
@@ -90,7 +90,8 @@ public final class WindDispatchedTasks {
         if (entry == null) {
             return null;
         }
-        for (final Map<Integer, Boolean> ids : BY_PLUGIN.values()) {
+        final Map<Integer, Boolean> ids = BY_PLUGIN.get(entry.plugin());
+        if (ids != null) {
             ids.remove(taskId);
         }
         cancelQuietly(entry.scheduled());
